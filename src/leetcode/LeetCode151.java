@@ -23,9 +23,6 @@ public class LeetCode151 {
             if (strings[i].equals("")) continue;
             stringBuilder.append(strings[i] + " ");
         }
-        BigDecimal bigDecimal = new BigDecimal("11");
-        bigDecimal.multiply(new BigDecimal("222"));
-
         return stringBuilder.toString().trim();
     }
 }
