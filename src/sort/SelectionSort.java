@@ -9,10 +9,10 @@ package sort;
  */
 public class SelectionSort {
     public static void main(String[] args) {
-        int[] arr = new int[]{0, 2, 7, 3, 4, 5, 6, 1, 2};
-        selectionSort(arr);
+        int[] arr = new int[]{275, 322, 12, 2, 23, 12, 43, 123, 22, 3, 56, 34, 99, 12, 1232, 3, 14, 45, 22, 22, 11, 44, 74};
+        selectionSort2(arr);
         for (int i : arr) {
-            System.out.print(i);
+            System.out.print(i + "，");
         }
     }
 
@@ -26,6 +26,26 @@ public class SelectionSort {
                 if (arr[j] < arr[minIndex]) minIndex = j;
             }
             BaseSort.swap(arr, i, minIndex);
+        }
+    }
+
+    public static void selectionSort2(int[] arr) {
+        int length = arr.length;
+        int minIndex, maxIndex;
+        for (int i = 0; i < length; i++) {
+            minIndex = maxIndex = i;
+            for (int j = i + 1; j < length - i; j++) {
+                if (arr[j] < arr[minIndex]) minIndex = j;
+                if (arr[j] > arr[maxIndex]) maxIndex = j;
+            }
+            if (minIndex == maxIndex) break;
+            BaseSort.swap(arr, i, minIndex);
+            //防止最大值为i的情况。
+            if (maxIndex == i) {
+                BaseSort.swap(arr, length - 1 - i, minIndex);
+            } else {
+                BaseSort.swap(arr, length - 1 - i, maxIndex);
+            }
         }
     }
 }
